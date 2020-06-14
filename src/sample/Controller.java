@@ -52,6 +52,8 @@ public class Controller {
 
     @FXML
     void initialize() {
+        DataBaseHandler handler = new DataBaseHandler();
+
         exit_button.setOnAction(event -> {
             System.out.println("назад");
             exit_button.getScene().getWindow().hide();
@@ -69,6 +71,14 @@ public class Controller {
             stage.setScene(new Scene(root));
             stage.showAndWait();
         });
+
+        take_button.setOnAction(event -> {
+//            handler.takeApplication("1", "3-203", "Фильтр",
+//                    "Удлиннительный фильтр начал замыкать", "2020-06-06", "1");
+            handler.takeApplication("1", auditorium_field.getText(), device_field.getText(), comment_area.getText(),
+                    date_field.getText(), status_field.getText());
+        });
+
 
     }
 }
