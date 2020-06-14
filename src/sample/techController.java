@@ -1,12 +1,17 @@
 package sample;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class techController {
 
@@ -54,18 +59,25 @@ public class techController {
 
     @FXML
     void initialize() {
-        assert go_button != null : "fx:id=\"go_button\" was not injected: check your FXML file 'OZDuserview.fxml'.";
-        assert exit_button != null : "fx:id=\"exit_button\" was not injected: check your FXML file 'OZDuserview.fxml'.";
-        assert table_area != null : "fx:id=\"table_area\" was not injected: check your FXML file 'OZDuserview.fxml'.";
-        assert td_fio_area != null : "fx:id=\"td_fio_area\" was not injected: check your FXML file 'OZDuserview.fxml'.";
-        assert td_auditorium_field != null : "fx:id=\"td_auditorium_field\" was not injected: check your FXML file 'OZDuserview.fxml'.";
-        assert td_device_field != null : "fx:id=\"td_device_field\" was not injected: check your FXML file 'OZDuserview.fxml'.";
-        assert td_comment_field != null : "fx:id=\"td_comment_field\" was not injected: check your FXML file 'OZDuserview.fxml'.";
-        assert td_date_field != null : "fx:id=\"td_date_field\" was not injected: check your FXML file 'OZDuserview.fxml'.";
-        assert td_status_field != null : "fx:id=\"td_status_field\" was not injected: check your FXML file 'OZDuserview.fxml'.";
-        assert td_id_field != null : "fx:id=\"td_id_field\" was not injected: check your FXML file 'OZDuserview.fxml'.";
-        assert id_field != null : "fx:id=\"id_field\" was not injected: check your FXML file 'OZDuserview.fxml'.";
-        assert accept_button != null : "fx:id=\"accept_button\" was not injected: check your FXML file 'OZDuserview.fxml'.";
+       exit_button.setOnAction(event -> {
+           System.out.println("назад");
+           exit_button.getScene().getWindow().hide();
+           FXMLLoader loader = new FXMLLoader();
+           loader.setLocation(getClass().getResource("authModal.fxml"));
+
+           try {
+               loader.load();
+           } catch (IOException e) {
+               e.printStackTrace();
+           }
+
+           Parent root = loader.getRoot();
+           Stage stage = new Stage();
+           stage.setScene(new Scene(root));
+           stage.showAndWait();
+       });
+
+
 
     }
 }
