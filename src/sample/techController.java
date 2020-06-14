@@ -84,6 +84,16 @@ public class techController {
            stage.setScene(new Scene(root));
            stage.showAndWait();
        });
+        go_button.setOnAction(event -> {
+            handler.getDBID(id_field.getText());
+        });
+
+
+        accept_button.setOnAction(event -> {
+            System.out.println("принятие заказа");
+            handler.getApplication(id_field.getText());
+        });
+
 
         initData();
         td_fio_area.setCellValueFactory(new PropertyValueFactory<User, String>("FIO"));
@@ -100,5 +110,6 @@ public class techController {
     private void initData(){
         usersData.add(new User("Ашрафуллин Айзат Рустамович", "3-432", "кофеварка", "сломался, течет", "2020-05-06", "1", "2"));
     }
+
 
 }

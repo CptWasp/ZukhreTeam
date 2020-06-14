@@ -1,9 +1,6 @@
 package sample;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DataBaseHandler extends bdConnection {
     Connection dbConnection;
@@ -28,15 +25,8 @@ public class DataBaseHandler extends bdConnection {
 
 
     public void takeApplication(String userId, String auditorium, String device, String comment, String date, String status){
-
-//        INSERT INTO `applications` (`application_id`, `auditorium`, `device`, `comment`, `date`, `status`, `user_id`, `tec_id`)
-//        VALUES (NULL, '203-5', 'утюг', 'не греет вообще и не брызгает вода', '2020-06-09', '2', '2', '1');
-
-
         String insert = "INSERT INTO `applications` (`application_id`, `auditorium`, `device`, `comment`, `date`, `status`, `user_id`, `tec_id`) VALUES"
                 +" (NULL, '"+auditorium+"', '"+device+"', '"+comment+"', '"+date+"', '"+status+"', '"+userId+"', '1');";
-
-
 
         try {
             PreparedStatement prSt = getDbConnection().prepareStatement(insert);
@@ -48,5 +38,46 @@ public class DataBaseHandler extends bdConnection {
         }
 
     }
+
+    public void getApplication(String id){
+        String techInsert = "UPDATE `applications` SET `status` = '0' WHERE `applications`.`application_id` = "+id+";";
+
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(techInsert);
+            prSt.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+        //another query
+    public void getDBID(String number){
+        try {
+            String connectionString = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName + "?verifyServerCertificate=false"+
+                    "&useSSL=false"+
+                    "&requireSSL=false"+
+                    "&useLegacyDatetimeCode=false"+
+                    "&amp"+
+                    "&serverTimezone=UTC";
+            Connection conn = DriverManager.getConnection(connectionString,"root","root");
+            Statement stmt = conn.createStatement();
+            ResultSet rs;
+
+            rs = stmt.executeQuery("SELECT * FROM `applications`");
+                String numID = rs.getString("device");
+                System.out.println(numID);
+            conn.close();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+
+
+
+
 
 }
