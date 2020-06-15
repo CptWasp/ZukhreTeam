@@ -89,7 +89,9 @@ public class techController {
        });
         go_button.setOnAction(event -> {
             DBWorker worker = new DBWorker();
-            String selectQuery = "SELECT * FROM `applications`";
+            String selectQuery = "SELECT `application_id`, `auditorium`, `device`, `comment`, `date`, `status`, `tec_id`, `user_name` FROM `applications`, `users` WHERE `applications`.`user_id` = `users`.`user_id`";
+            String anotherSelectQuery = "SELECT `application_id`, `auditorium`, `device`, `comment`, `date`, `status`, `tec_id`, `user_name` FROM `applications`, `users`";
+
             try {
                 Statement statement = worker.getConnection().createStatement();
                 ResultSet resultSet = statement.executeQuery(selectQuery);
@@ -104,7 +106,9 @@ public class techController {
                         user.setComment(resultSet.getString(4));
                         user.setDate(resultSet.getString(5));
                         user.setStatus(resultSet.getString(6));
-                        usersData.add(new User("Бахарева Ольга Владимировна", user.getAuditorium(), user.getDevice(), user.getComment(), user.getDate(), user.getStatus(), user.getId()));
+                        user.setFIO(resultSet.getString(8));
+
+                        usersData.add(new User(user.getFIO(), user.getAuditorium(), user.getDevice(), user.getComment(), user.getDate(), user.getStatus(), user.getId()));
                     }
 
                     td_fio_area.setCellValueFactory(new PropertyValueFactory<User, String>("FIO"));
