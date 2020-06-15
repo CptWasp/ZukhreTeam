@@ -53,28 +53,24 @@ public class DataBaseHandler extends bdConnection {
     }
 
 
-        //another query
-    public void getDBID(String number){
-        try {
-            String connectionString = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName + "?verifyServerCertificate=false"+
-                    "&useSSL=false"+
-                    "&requireSSL=false"+
-                    "&useLegacyDatetimeCode=false"+
-                    "&amp"+
-                    "&serverTimezone=UTC";
-            Connection conn = DriverManager.getConnection(connectionString,"root","root");
-            Statement stmt = conn.createStatement();
-            ResultSet rs;
-
-            rs = stmt.executeQuery("SELECT * FROM `applications`");
-                String numID = rs.getString("device");
-                System.out.println(numID);
-            conn.close();
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
-    }
-
+//        //another query
+//    public void getDBID(String number){
+//        try {
+//            String connectionString = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName + "?verifyServerCertificate=false"+
+//                    "&useSSL=false"+
+//                    "&requireSSL=false"+
+//                    "&useLegacyDatetimeCode=false"+
+//                    "&amp"+
+//                    "&serverTimezone=UTC";
+//
+//        } catch (Exception e) {
+//            System.err.println(e.getMessage());
+//        }
+//    }
+//
+//    public Connection getConnection(){
+//        return dbConnection;
+//    }
 
 
 

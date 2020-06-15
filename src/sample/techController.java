@@ -2,6 +2,9 @@ package sample;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -85,7 +88,40 @@ public class techController {
            stage.showAndWait();
        });
         go_button.setOnAction(event -> {
-            handler.getDBID(id_field.getText());
+            DBWorker worker = new DBWorker();
+            String selectQuery = "SELECT * FROM `applications`";
+            try {
+                Statement statement = worker.getConnection().createStatement();
+                ResultSet resultSet = statement.executeQuery(selectQuery);
+
+                    while (resultSet.next()) {
+    //                    int id = resultSet.getInt(1);
+    //                    System.out.println(id);
+                        User user = new User();
+                        user.setId(resultSet.getString(1));
+                        user.setAuditorium(resultSet.getString(2));
+                        user.setDevice(resultSet.getString(3));
+                        user.setComment(resultSet.getString(4));
+                        user.setDate(resultSet.getString(5));
+                        user.setStatus(resultSet.getString(6));
+                        usersData.add(new User("Бахарева Ольга Владимировна", user.getAuditorium(), user.getDevice(), user.getComment(), user.getDate(), user.getStatus(), user.getId()));
+                    }
+
+                    td_fio_area.setCellValueFactory(new PropertyValueFactory<User, String>("FIO"));
+                    td_auditorium_field.setCellValueFactory(new PropertyValueFactory<User, String>("auditorium"));
+                    td_device_field.setCellValueFactory(new PropertyValueFactory<User, String>("device"));
+                    td_comment_field.setCellValueFactory(new PropertyValueFactory<User, String>("comment"));
+                    td_date_field.setCellValueFactory(new PropertyValueFactory<User, String>("date"));
+                    td_status_field.setCellValueFactory(new PropertyValueFactory<User, String>("status"));
+                    td_id_field.setCellValueFactory(new PropertyValueFactory<User, String>("id"));
+
+                    table_area.setItems(usersData);
+
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+
         });
 
 
@@ -95,21 +131,21 @@ public class techController {
         });
 
 
-        initData();
-        td_fio_area.setCellValueFactory(new PropertyValueFactory<User, String>("FIO"));
-        td_auditorium_field.setCellValueFactory(new PropertyValueFactory<User, String>("auditorium"));
-        td_device_field.setCellValueFactory(new PropertyValueFactory<User, String>("device"));
-        td_comment_field.setCellValueFactory(new PropertyValueFactory<User, String>("comment"));
-        td_date_field.setCellValueFactory(new PropertyValueFactory<User, String>("date"));
-        td_status_field.setCellValueFactory(new PropertyValueFactory<User, String>("status"));
-        td_id_field.setCellValueFactory(new PropertyValueFactory<User, String>("id"));
-
-        table_area.setItems(usersData);
+//        initData();
+//        td_fio_area.setCellValueFactory(new PropertyValueFactory<User, String>("FIO"));
+//        td_auditorium_field.setCellValueFactory(new PropertyValueFactory<User, String>("auditorium"));
+//        td_device_field.setCellValueFactory(new PropertyValueFactory<User, String>("device"));
+//        td_comment_field.setCellValueFactory(new PropertyValueFactory<User, String>("comment"));
+//        td_date_field.setCellValueFactory(new PropertyValueFactory<User, String>("date"));
+//        td_status_field.setCellValueFactory(new PropertyValueFactory<User, String>("status"));
+//        td_id_field.setCellValueFactory(new PropertyValueFactory<User, String>("id"));
+//
+//        table_area.setItems(usersData);
     }
 
-    private void initData(){
-        usersData.add(new User("Ашрафуллин Айзат Рустамович", "3-432", "кофеварка", "сломался, течет", "2020-05-06", "1", "2"));
-    }
+//    private void initData(){
+//        usersData.add(new User("Ашрафуллин Айзат Рустамович", "3-432", "кофеварка", "сломался, течет", "2020-05-06", "1", "2"));
+//    }
 
 
 }
