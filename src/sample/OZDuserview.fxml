@@ -18,8 +18,7 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <Button layoutX="14.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: #55F;" text="&lt;-" textFill="WHITE" />
-            <Button fx:id="go_button" layoutX="80.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: #55F;" text="-&gt;" textFill="WHITE" />
+            <Button fx:id="go_button" layoutX="49.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: #55F;" text="Показать список заказов" textFill="WHITE" />
             <Button fx:id="exit_button" layoutX="719.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: #55F;" text="Выход" textFill="WHITE" />
             <Label layoutX="241.0" layoutY="84.0" text="ФИО" textFill="WHITE">
                <font>
