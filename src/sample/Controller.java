@@ -75,7 +75,7 @@ public class Controller {
         take_button.setOnAction(event -> {
 //            handler.takeApplication("1", "3-203", "Фильтр",
 //                    "Удлиннительный фильтр начал замыкать", "2020-06-06", "1");
-            handler.takeApplication("1", auditorium_field.getText(), device_field.getText(), comment_area.getText(),
+            handler.takeApplication(name_field.getText(), auditorium_field.getText(), device_field.getText(), comment_area.getText(),
                     date_field.getText(), status_field.getText());
         });
 
