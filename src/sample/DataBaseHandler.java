@@ -25,8 +25,8 @@ public class DataBaseHandler extends bdConnection {
 
 
     public void takeApplication(String userId, String auditorium, String device, String comment, String date, String status){
-        String insert = "INSERT INTO `applications` (`application_id`, `auditorium`, `device`, `comment`, `date`, `status`, `user_id`, `tec_id`) VALUES"
-                +" (NULL, '"+auditorium+"', '"+device+"', '"+comment+"', '"+date+"', '"+status+"', '"+userId+"', '1');";
+        String insert = "INSERT INTO `applications` (`application_id`, `auditorium`, `device`, `comment`, `date`, `status`, `user_id`) VALUES"
+                +" (NULL, '"+auditorium+"', '"+device+"', '"+comment+"', '"+date+"', '"+status+"', '"+userId+"');";
 
         try {
             PreparedStatement prSt = getDbConnection().prepareStatement(insert);
@@ -40,7 +40,7 @@ public class DataBaseHandler extends bdConnection {
     }
 
     public void getApplication(String id){
-        String techInsert = "UPDATE `applications` SET `status` = '0' WHERE `applications`.`application_id` = "+id+";";
+        String techInsert = "UPDATE `applications` SET `status` = 'починен' WHERE `applications`.`application_id` = "+id+";";
 
         try {
             PreparedStatement prSt = getDbConnection().prepareStatement(techInsert);

@@ -55,10 +55,10 @@ public class Controller {
         DataBaseHandler handler = new DataBaseHandler();
 
         exit_button.setOnAction(event -> {
-            System.out.println("назад");
+            System.out.println("к заявкам");
             exit_button.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("authModal.fxml"));
+            loader.setLocation(getClass().getResource("prepodsView.fxml"));
 
             try {
                 loader.load();

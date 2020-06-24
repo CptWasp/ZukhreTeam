@@ -21,7 +21,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import sample.User;
 
-public class techController {
+
+
+public class AnotherFuckingController {
+
     private ObservableList<User> usersData = FXCollections.observableArrayList();
 
     @FXML
@@ -70,23 +73,23 @@ public class techController {
     void initialize() {
         DataBaseHandler handler = new DataBaseHandler();
 
-       exit_button.setOnAction(event -> {
-           System.out.println("назад");
-           exit_button.getScene().getWindow().hide();
-           FXMLLoader loader = new FXMLLoader();
-           loader.setLocation(getClass().getResource("authModal.fxml"));
+        exit_button.setOnAction(event -> {
+            System.out.println("назад");
+            exit_button.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("authModal.fxml"));
 
-           try {
-               loader.load();
-           } catch (IOException e) {
-               e.printStackTrace();
-           }
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-           Parent root = loader.getRoot();
-           Stage stage = new Stage();
-           stage.setScene(new Scene(root));
-           stage.showAndWait();
-       });
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+        });
         go_button.setOnAction(event -> {
             DBWorker worker = new DBWorker();
             String selectQuery = "SELECT `application_id`, `auditorium`, `device`, `comment`, `date`, `status`, `user_name` FROM `applications`, `users` WHERE `applications`.`user_id` = `users`.`user_id`";
@@ -96,30 +99,30 @@ public class techController {
                 Statement statement = worker.getConnection().createStatement();
                 ResultSet resultSet = statement.executeQuery(selectQuery);
 
-                    while (resultSet.next()) {
-    //                    int id = resultSet.getInt(1);
-    //                    System.out.println(id);
-                        User user = new User();
-                        user.setId(resultSet.getString(1));
-                        user.setAuditorium(resultSet.getString(2));
-                        user.setDevice(resultSet.getString(3));
-                        user.setComment(resultSet.getString(4));
-                        user.setDate(resultSet.getString(5));
-                        user.setStatus(resultSet.getString(6));
-                        user.setFIO(resultSet.getString(7));
+                while (resultSet.next()) {
+                    //                    int id = resultSet.getInt(1);
+                    //                    System.out.println(id);
+                    User user = new User();
+                    user.setId(resultSet.getString(1));
+                    user.setAuditorium(resultSet.getString(2));
+                    user.setDevice(resultSet.getString(3));
+                    user.setComment(resultSet.getString(4));
+                    user.setDate(resultSet.getString(5));
+                    user.setStatus(resultSet.getString(6));
+                    user.setFIO(resultSet.getString(7));
 
-                        usersData.add(new User(user.getFIO(), user.getAuditorium(), user.getDevice(), user.getComment(), user.getDate(), user.getStatus(), user.getId()));
-                    }
+                    usersData.add(new User(user.getFIO(), user.getAuditorium(), user.getDevice(), user.getComment(), user.getDate(), user.getStatus(), user.getId()));
+                }
 
-                    td_fio_area.setCellValueFactory(new PropertyValueFactory<User, String>("FIO"));
-                    td_auditorium_field.setCellValueFactory(new PropertyValueFactory<User, String>("auditorium"));
-                    td_device_field.setCellValueFactory(new PropertyValueFactory<User, String>("device"));
-                    td_comment_field.setCellValueFactory(new PropertyValueFactory<User, String>("comment"));
-                    td_date_field.setCellValueFactory(new PropertyValueFactory<User, String>("date"));
-                    td_status_field.setCellValueFactory(new PropertyValueFactory<User, String>("status"));
-                    td_id_field.setCellValueFactory(new PropertyValueFactory<User, String>("id"));
+                td_fio_area.setCellValueFactory(new PropertyValueFactory<User, String>("FIO"));
+                td_auditorium_field.setCellValueFactory(new PropertyValueFactory<User, String>("auditorium"));
+                td_device_field.setCellValueFactory(new PropertyValueFactory<User, String>("device"));
+                td_comment_field.setCellValueFactory(new PropertyValueFactory<User, String>("comment"));
+                td_date_field.setCellValueFactory(new PropertyValueFactory<User, String>("date"));
+                td_status_field.setCellValueFactory(new PropertyValueFactory<User, String>("status"));
+                td_id_field.setCellValueFactory(new PropertyValueFactory<User, String>("id"));
 
-                    table_area.setItems(usersData);
+                table_area.setItems(usersData);
 
 
             } catch (SQLException throwables) {
@@ -129,10 +132,6 @@ public class techController {
         });
 
 
-        accept_button.setOnAction(event -> {
-            System.out.println("принятие заказа");
-            handler.getApplication(id_field.getText());
-        });
 
 
 //        initData();
@@ -146,10 +145,6 @@ public class techController {
 //
 //        table_area.setItems(usersData);
     }
-
-//    private void initData(){
-//        usersData.add(new User("Ашрафуллин Айзат Рустамович", "3-432", "кофеварка", "сломался, течет", "2020-05-06", "1", "2"));
-//    }
 
 
 }

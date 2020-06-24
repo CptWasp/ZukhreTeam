@@ -26,7 +26,7 @@ public class EnterController {
     private TextField FIO_FIELD;
 
     @FXML
-    private TextField PROFESSOIN_FEILD;
+    private TextField PROFESSION_FIELD;
 
     @FXML
     private Button AuthAsTech;
@@ -40,9 +40,13 @@ public class EnterController {
     @FXML
     void initialize() {
 
+
+
         auth_button.setOnAction(event -> {
-            String pass = PROFESSOIN_FEILD.getText();
+            String pass = PROFESSION_FIELD.getText();
             String login = FIO_FIELD.getText();
+            System.out.println(pass+" "+login);
+
 
             if(pass.equals("1234") && login.equals("Бахарева Ольга Владимировна")){
                 System.out.println("вход в систему как преподаватель");

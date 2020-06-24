@@ -17,7 +17,7 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <Button fx:id="exit_button" layoutX="719.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: #55F;" text="Выход" textFill="WHITE" />
+            <Button fx:id="exit_button" layoutX="719.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: #55F;" text="Посмотреть заявки" textFill="WHITE" />
             <Label layoutX="139.0" layoutY="114.0" text="ID" textFill="WHITE">
                <font>
                   <Font size="14.0" />
