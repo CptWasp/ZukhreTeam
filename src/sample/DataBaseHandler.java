@@ -53,24 +53,18 @@ public class DataBaseHandler extends bdConnection {
     }
 
 
-//        //another query
-//    public void getDBID(String number){
-//        try {
-//            String connectionString = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName + "?verifyServerCertificate=false"+
-//                    "&useSSL=false"+
-//                    "&requireSSL=false"+
-//                    "&useLegacyDatetimeCode=false"+
-//                    "&amp"+
-//                    "&serverTimezone=UTC";
-//
-//        } catch (Exception e) {
-//            System.err.println(e.getMessage());
-//        }
-//    }
-//
-//    public Connection getConnection(){
-//        return dbConnection;
-//    }
+    public void SignUp(String FIO, String profession){
+        String techInsert = "INSERT INTO `users` (`user_id`, `user_name`, `profession`) VALUES " +
+                "(NULL, '"+FIO+"', '"+profession+"');";
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(techInsert);
+            prSt.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 

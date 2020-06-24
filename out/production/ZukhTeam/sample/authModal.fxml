@@ -16,7 +16,8 @@
                </font>
             </Label>
             <Button fx:id="AuthAsTech" alignment="CENTER" contentDisplay="CENTER" layoutX="325.0" layoutY="178.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="151.0" style="-fx-background-color: #55F;" text="Техник" textFill="WHITE" />
-            <Button fx:id="AuthAsProff" contentDisplay="CENTER" layoutX="325.0" layoutY="225.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="151.0" style="-fx-background-color: #55F;" text="Преподаватель" textFill="WHITE" />
+            <Button fx:id="AuthAsProff" contentDisplay="CENTER" layoutX="325.0" layoutY="223.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="151.0" style="-fx-background-color: #55F;" text="Преподаватель" textFill="WHITE" />
+            <Button fx:id="Reg_button" contentDisplay="CENTER" layoutX="325.0" layoutY="269.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="151.0" style="-fx-background-color: #55F;" text="Зарегистрироваться" textFill="WHITE" />
          </children>
     </AnchorPane>
   </children>

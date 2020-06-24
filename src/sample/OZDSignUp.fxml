@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerSignUp">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #449;" VBox.vgrow="ALWAYS">
+         <children>
+            <Label layoutX="273.0" layoutY="18.0" text="Регистрация" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Button fx:id="exit_button" layoutX="719.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: #55F;" text="Выход" textFill="WHITE" />
+            <Label layoutX="129.0" layoutY="114.0" text="ФИО" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="93.0" layoutY="159.0" text="Профессия" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="sigup_button" layoutX="639.0" layoutY="375.0" mnemonicParsing="false" text="Зарегистрироваться" />
+            <TextField fx:id="FIO_field" layoutX="180.0" layoutY="112.0" prefHeight="26.0" prefWidth="320.0" promptText="Фамилия Имя Отчество" style="-fx-background-color: #fff#fff;" />
+            <TextField fx:id="profession_field" layoutX="180.0" layoutY="156.0" prefHeight="26.0" prefWidth="320.0" promptText="&quot;Преподаватель&quot; или &quot;Техник&quot;" style="-fx-background-color: #fff#fff;" />
+            <Label fx:id="signLabel" layoutX="197.0" layoutY="207.0" text="Регистрация завершена" textFill="WHITE" visible="false" />
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>
